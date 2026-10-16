@@ -325,6 +325,39 @@
     .consult-status { color:var(--wood); }
     .site-footer { background:#EAE5DA; }
     .footer-links a:hover { color:var(--lacquer); }
+    .about-portrait { margin:32px 0 0; max-width:420px; padding:10px; background:var(--paper); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow); transform:rotate(-2deg); }
+    .about-portrait img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; border-radius:15px; }
+    .about-portrait figcaption { padding:14px 10px 8px; color:var(--wood); font-size:.78rem; line-height:1.8; letter-spacing:.04em; }
+    .about-portrait figcaption span { display:block; font:600 .62rem/1.8 Inter,sans-serif; letter-spacing:.16em; color:var(--muted); }
+    .life-showcase { margin-top:80px; }
+    .life-heading { max-width:650px; margin-bottom:30px; }
+    .life-heading h3 { margin:12px 0; font-size:clamp(1.5rem,3vw,2.2rem); font-weight:700; line-height:1.5; }
+    .life-heading p { color:var(--muted); font-size:.92rem; line-height:1.95; }
+    .life-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:18px; }
+    .life-photo { margin:0; min-width:0; background:var(--paper); border:1px solid var(--line); border-radius:18px; overflow:hidden; }
+    .life-photo--featured { grid-column:span 2; grid-row:span 2; }
+    .life-photo img { display:block; width:100%; height:auto; aspect-ratio:1; object-fit:cover; transition:filter .35s; }
+    .life-photo:hover img { filter:brightness(1.04); }
+    .life-photo figcaption { padding:15px 18px 18px; }
+    .life-photo figcaption span { display:block; font:600 .58rem/1.6 Inter,sans-serif; letter-spacing:.1em; color:var(--wood); margin-bottom:5px; }
+    .life-photo figcaption strong { display:block; font-size:.95rem; font-weight:600; }
+    .life-photo--featured img { height:calc(100% - 100px); min-height:0; aspect-ratio:auto; }
+    .life-photo--featured figcaption { min-height:100px; padding:22px; }
+    @media (max-width:850px) {
+      .about-portrait { max-width:360px; margin-inline:auto; }
+      .life-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); }
+      .life-photo--featured { grid-row:auto; }
+      .life-photo--featured img { height:auto; aspect-ratio:3/2; }
+      .life-photo--featured figcaption { min-height:0; }
+    }
+    @media (max-width:600px) {
+      .life-showcase { margin-top:52px; }
+      .life-gallery { gap:12px; }
+      .life-photo figcaption { padding:12px; }
+      .life-photo figcaption strong { font-size:.83rem; }
+      .life-photo figcaption span { font-size:.52rem; letter-spacing:.04em; }
+    }
+    @media (prefers-reduced-motion:reduce) { .life-photo img { transition:none; } }
     @keyframes flowLine {to{stroke-dashoffset:-160;}}
     @keyframes floatY {0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
     @keyframes caretPulse {50%{opacity:0}}
@@ -511,6 +544,10 @@
             <div class="section-index">01 / ABOUT ME</div>
             <span class="overline">Human Insight. Digital Possibilities.</span>
             <h2 class="section-heading" id="aboutTitle">跨越語言與科技，<br><span class="gradient-text">讓專業創造<br>更多可能。</span></h2>
+            <figure class="about-portrait">
+              <img src="作品集/05_持續學習.png" alt="我的個人形象：背著背包坐在山巔，眺望夕陽下的山脈與湖泊" width="498" height="504" loading="lazy" decoding="async">
+              <figcaption><span lang="en">ALWAYS LEARNING, ALWAYS EXPLORING</span>保持好奇，在每一段探索中持續成長。</figcaption>
+            </figure>
           </div>
           <div class="about-copy reveal">
             <p><strong>你好，歡迎來到我的個人網站！</strong>我是一位熱愛語言、文化與數位科技的終身學習者，擁有翻譯、語言服務及專案管理的實務經驗。</p>
@@ -527,6 +564,35 @@
           <article class="capability reveal"><div class="cap-top"><span class="cap-no">05 / 05</span><span class="cap-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span></div><h3><span>LIFELONG LEARNING</span>持續學習與跨領域探索</h3><p>保持好奇、實際嘗試新工具、整合不同知識，讓創意逐步成為具體成果。</p></article>
         </div>
         <div class="philosophy reveal"><small>MY PHILOSOPHY / 品牌理念</small><p>以語言建立連結，以科技拓展可能，<br>以設計傳遞價值。</p></div>
+        <div class="life-showcase" aria-labelledby="lifeTitle">
+          <div class="life-heading reveal">
+            <span class="overline">Work, Life & Inspiration</span>
+            <h3 id="lifeTitle">工作與靈感，都有自己的風景。</h3>
+            <p>從桌前的專注，到旅途中的觀察；語言、創作與知識整理，交織成我看待世界的方式。</p>
+          </div>
+          <div class="life-gallery">
+            <figure class="life-photo life-photo--featured reveal">
+              <img src="作品集/01_個人工作空間.png" alt="暖陽照映的工作桌，擺放筆電、筆記本與翻譯及 AI 工具書籍，窗外可見台北城市景色" width="504" height="505" loading="lazy" decoding="async">
+              <figcaption><span lang="en">01 / MY WORKSPACE</span><strong>讓專注與靈感，在日常相遇。</strong></figcaption>
+            </figure>
+            <figure class="life-photo reveal">
+              <img src="作品集/02_語言與文化.png" alt="地球儀、語言文化書籍與旅行筆記，窗外是歐洲城市風景" width="498" height="505" loading="lazy" decoding="async">
+              <figcaption><span lang="en">02 / LANGUAGE & CULTURE</span><strong>在語言之間，理解世界</strong></figcaption>
+            </figure>
+            <figure class="life-photo reveal">
+              <img src="作品集/04_設計與創作.png" alt="木桌上的彩色鉛筆與描繪街景的手繪速寫本" width="504" height="505" loading="lazy" decoding="async">
+              <figcaption><span lang="en">03 / DESIGN & CREATION</span><strong>用美感，讓想法被看見</strong></figcaption>
+            </figure>
+            <figure class="life-photo reveal">
+              <img src="作品集/03_探索旅程.png" alt="沿著蔚藍海岸延伸的步道，兩旁有綠樹、花草與木欄杆" width="504" height="505" loading="lazy" decoding="async">
+              <figcaption><span lang="en">04 / EXPLORATION</span><strong>走出日常，收藏新視角</strong></figcaption>
+            </figure>
+            <figure class="life-photo reveal">
+              <img src="作品集/06_知識管理.png" alt="書籍、筆記與靈感便箋整齊擺放於灑滿陽光的書桌" width="504" height="505" loading="lazy" decoding="async">
+              <figcaption><span lang="en">05 / KNOWLEDGE & IDEAS</span><strong>整理知識，累積下一步</strong></figcaption>
+            </figure>
+          </div>
+        </div>
       </div>
     </section>
 

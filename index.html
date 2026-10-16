@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F7F4EE">
+  <meta name="description" content="結合日文翻譯、AI 技術、專業母語審校與跨文化溝通，以人的專業為 AI 效率創造真正的價值。探索 AI + PE 智慧翻譯、語言資產管理及專業合作。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="zh_TW">
+  <meta property="og:title" content="AI 的效率，人的專業｜日文翻譯 × AI 智慧語言服務">
+  <meta property="og:description" content="在語言、科技與文化之間，重新定義專業溝通的可能。探索 AI + PE 智慧翻譯與跨文化語言服務。">
+  <title>AI 的效率，人的專業｜日文翻譯 × AI 智慧語言服務</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&family=Noto+Serif+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Tailwind CDN 為單檔展示用途；正式上線建議改用 Tailwind CLI 或 Vite 建置。 -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js" defer></script>
+  <style>
+    :root {
+      --paper: #F7F4EE; --water: #9CCFE3; --indigo: #315C87;
+      --bamboo: #A8BD7A; --gold: #C8A56B; --wood: #8B6347;
+      --pink: #E9C7C7; --gray: #5B5B58; --lacquer: #A65446;
+      --ink: #315C87; --ink-deep: #315C87; --muted: #5B5B58; --muted-2: #5B5B58;
+      --blue: var(--indigo); --purple: var(--wood); --mint: var(--bamboo); --line: #EAE5DA;
+      --wash: #F7F4EE; --white: #F7F4EE; --radius: 22px; --nav-height: 82px;
+      --shadow: 0 22px 65px rgba(49,92,135,.075);
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-height) + 22px); }
+    body { margin: 0; color: var(--ink); background: white; font-family: 'Inter','Noto Sans TC', sans-serif; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    body.modal-open { overflow: hidden; }
+    button, input, a { -webkit-tap-highlight-color: transparent; }
+    a { text-decoration: none; color: inherit; }
+    button { font: inherit; cursor: pointer; }
+    ::selection { background: #EAE5DA; color: #315C87; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .sr-only:focus { position: fixed; z-index: 100; top: 12px; left: 12px; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; white-space: normal; background: #fff; padding: 12px; border-radius: 10px; box-shadow: 0 10px 30px rgba(49,92,135,.2); }
+
+    :focus-visible { outline: 3px solid #E9C7C7; outline-offset: 4px; }
+    .container { width: min(1160px, calc(100% - 60px)); margin-inline: auto; }
+    .section { position: relative; padding: 112px 0; }
+    .section--soft { background: #F7F4EE; }
+    .overline { font-family: 'Inter',sans-serif; font-size: .77rem; font-weight: 700; letter-spacing: .19em; text-transform: uppercase; color: var(--blue); }
+    .overline--light { color: #315C87; }
+    .section-heading { font-size: clamp(2.05rem, 4.25vw, 3.65rem); line-height: 1.36; letter-spacing: -.065em; font-weight: 700; margin: 21px 0 19px; }
+    .section-lede { color: var(--muted); font-size: 1.03rem; line-height: 2.12; max-width: 610px; }
+    .gradient-text { background: linear-gradient(105deg, #315C87 4%, #E9C7C7 70%, #E9C7C7); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .serif { font-family: 'Noto Serif TC',serif; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 11px; border: 1px solid #EAE5DA; background: rgba(247,244,238,.82); border-radius: 999px; padding: 9px 14px; font-size: .71rem; font-weight: 700; letter-spacing: .07em; color: #5B5B58; box-shadow: 0 8px 28px rgba(49,92,135,.055); }
+    .status-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px #EAE5DA; flex: 0 0 auto; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 11px; min-height: 54px; padding: 14px 23px; font-size: .91rem; font-weight: 700; border-radius: 12px; border: 1px solid transparent; transition: transform .25s ease, border-color .25s ease, background .25s ease, box-shadow .25s ease; white-space: nowrap; }
+    .btn:hover { transform: translateY(-3px); }
+    .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+    .btn-primary { color: white; background: linear-gradient(110deg, var(--blue), #E9C7C7); box-shadow: 0 12px 27px rgba(49,92,135,.2); }
+    .btn-primary:hover { box-shadow: 0 18px 31px rgba(49,92,135,.29); }
+    .btn-secondary { color: #5B5B58; background: rgba(247,244,238,.75); border-color: #EAE5DA; }
+    .btn-secondary:hover { background: #fff; border-color: #9CCFE3; box-shadow: 0 10px 27px rgba(49,92,135,.08); }
+    .text-link { display: inline-flex; align-items: center; gap: 9px; font-size: .87rem; font-weight: 700; color: #315C87; transition: gap .2s, color .2s; }
+    .text-link:hover { gap: 14px; color: var(--purple); }
+    .text-link svg { width: 16px; height: 16px; }
+    .site-header { position: sticky; top: 0; z-index: 60; height: var(--nav-height); background: rgba(247,244,238,.88); border-bottom: 1px solid rgba(49,92,135,.68); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    .site-header::before { content: ''; height: 2px; width: var(--scroll-progress,0%); position: absolute; left: 0; top: 0; background: linear-gradient(90deg,var(--blue),var(--purple),var(--mint)); }
+    .nav-inner { height: 100%; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: max-content; }
+    .brand-mark { position: relative; width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: #F7F4EE; color: var(--blue); font-size: 1.11rem; font-weight: 800; letter-spacing: -.09em; border: 1px solid #F7F4EE; }
+    .brand-mark::after { content: ''; width: 8px; height: 8px; background: var(--mint); border: 2px solid white; border-radius: 50%; position: absolute; top: 5px; right: 3px; }
+    .brand-copy strong { display: block; font-size: .82rem; font-weight: 800; letter-spacing: .1em; color: #315C87; }
+    .brand-copy small { display: block; font-size: .68rem; color: #5B5B58; margin-top: 2px; letter-spacing: .08em; }
+    .desktop-nav { display: flex; align-items: center; gap: clamp(15px,2.1vw,31px); }
+    .desktop-nav a:not(.nav-cta) { position: relative; color: #5B5B58; font-size: .82rem; font-weight: 600; padding: 12px 0; white-space: nowrap; transition: color .2s; }
+    .desktop-nav a:not(.nav-cta)::after { content: ''; position: absolute; height: 2px; background: linear-gradient(90deg,var(--blue),var(--purple)); bottom: 5px; left: 0; width: 0; transition: width .2s; }
+    .desktop-nav a[aria-current="location"] { color: var(--blue); }
+    .desktop-nav a[aria-current="location"]::after, .desktop-nav a:hover::after { width: 100%; }
+    .nav-cta { font-size: .77rem; font-weight: 700; padding: 12px 16px; color: #fff; border-radius: 10px; background: #315C87; transition: background .2s,transform .2s; white-space: nowrap; }
+    .nav-cta:hover { background: var(--blue); transform: translateY(-2px); }
+    .menu-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid #EAE5DA; border-radius: 12px; background: #fff; color: var(--ink); }
+    .menu-glyph {display:block; width:19px; height:14px; border-top:2px solid currentColor; border-bottom:2px solid currentColor; position:relative;}
+    .menu-glyph::before {content:''; position:absolute; width:19px; border-top:2px solid currentColor; top:5px; left:0;}
+    .menu-toggle[aria-expanded="true"] .menu-glyph {border-color:transparent;}
+    .menu-toggle[aria-expanded="true"] .menu-glyph::before {transform:rotate(45deg); top:5px;}
+    .menu-toggle[aria-expanded="true"] .menu-glyph::after {content:''; position:absolute; width:19px; border-top:2px solid currentColor; left:0; top:5px; transform:rotate(-45deg);}
+
+    .mobile-nav { display: none; }
+    .hero { min-height: 750px; background: radial-gradient(ellipse at 77% 26%,#F7F4EE 0,transparent 37%), radial-gradient(ellipse at 24% 74%,#F7F4EE 0,transparent 41%), linear-gradient(180deg,#fff 0%,#fff 69%,#F7F4EE 100%); overflow: hidden; padding: 69px 0 83px; position: relative; }
+    .hero::before { content: ''; position: absolute; right: -140px; top: 0; width: 650px; height: 650px; opacity: .38; background-image: radial-gradient(#9CCFE3 1px,transparent 1px); background-size: 25px 25px; mask-image: radial-gradient(circle at center,#000,transparent 69%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: .96fr 1.04fr; align-items: center; gap: 2px; min-height: 595px; }
+    .hero-copy { z-index: 2; position: relative; padding-bottom: 10px; }
+    .hero h1 { font-size: clamp(3.35rem, 5.6vw, 5.7rem); letter-spacing: -.08em; line-height: 1.37; font-weight: 800; margin: 31px 0 14px; }
+    .hero h1 .line { display: block; position: relative; width: fit-content; }
+    .hero h1 .measure { display: block; white-space: nowrap; }
+    .hero h1 .typed { display: none; position: absolute; top: 0; left: 0; white-space: nowrap; }
+    .hero h1.is-typing .measure { visibility: hidden; }
+    .hero h1.is-typing .typed { display: block; }
+    .hero h1.is-typing .typed.active::after { content: ''; display: inline-block; width: 3px; height: .79em; margin-left: 5px; vertical-align: -.07em; background: #E9C7C7; animation: caretPulse .7s step-end infinite; }
+    .hero h1.is-finished .typed::after { animation: fadeCaret 1.15s forwards; }
+    .hero-en { font-family: 'Inter', sans-serif; color: #315C87; font-size: .84rem; font-weight: 600; letter-spacing: .022em; margin: 0 0 24px; }
+    .hero-description { color: #5B5B58; font-size: 1.04rem; line-height: 2.03; max-width: 512px; margin: 0 0 31px; }
+    .hero-description strong { font-weight: 600; color: #5B5B58; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-tags { display: flex; gap: 14px; margin-top: 42px; flex-wrap: wrap; font-family: 'Inter',sans-serif; font-size: .67rem; font-weight: 700; letter-spacing: .11em; color: #9CCFE3; }
+    .hero-tags span { display: inline-flex; gap: 14px; align-items: center; }
+    .hero-tags span + span::before { content: '·'; color: #9CCFE3; font-size: 1rem; }
+    .hero-visual { height: 570px; position: relative; z-index: 1; display: grid; place-items: center; isolation: isolate; }
+    .visual-stage { position: relative; height: 550px; width: 550px; max-width: 100%; flex: 0 0 auto; }
+    .visual-stage::before { content: ''; position: absolute; inset: 15%; border-radius: 50%; background: radial-gradient(circle,#EAE5DA 0,#F7F4EE 35%,transparent 72%); filter: blur(39px); opacity: .8; z-index: -1; }
+    .network { width: 100%; height: 100%; overflow: visible; }
+    .network .ring { fill: none; stroke: #EAE5DA; stroke-width: 1.2; }
+    .network .ring-dashed { fill:none; stroke:#EAE5DA; stroke-dasharray: 5 10; stroke-width: 1.3; }
+    .network .link-line { stroke: #9CCFE3; stroke-width: 1.1; fill: none; opacity: .55; }
+    .network .motion-line { fill: none; stroke: #9CCFE3; stroke-width: 1.8; opacity: .72; stroke-linecap: round; stroke-dasharray: 3 13; animation: flowLine 16s linear infinite; }
+    .network .n-dot { fill: #fff; stroke: #9CCFE3; stroke-width: 2; }
+    .network .n-dot-green { fill: #EAE5DA; stroke: #A8BD7A; stroke-width: 2; }
+    .orbital-core { position: absolute; width: 250px; height: 250px; border-radius: 50%; left: 50%; top: 50%; transform: translate(-50%,-50%); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; background: linear-gradient(145deg,rgba(247,244,238,.95),rgba(247,244,238,.89)); border: 1px solid rgba(247,244,238,.95); box-shadow: inset 0 0 1px #fff,0 26px 80px rgba(49,92,135,.15),0 4px 22px rgba(49,92,135,.09); }
+    .core-glyph { font-family: 'Noto Serif TC',serif; font-size: 4.15rem; line-height: 1; background: linear-gradient(120deg,#315C87,#E9C7C7); background-clip: text; color: transparent; margin-bottom: 19px; }
+    .orbital-core strong { font-size: .67rem; font-weight: 800; line-height: 1.5; letter-spacing: .25em; color: #315C87; }
+    .orbital-core small { margin-top: 8px; font-size: .67rem; letter-spacing: .15em; color: #9CCFE3; font-weight: 700; }
+    .network-label { position: absolute; display: flex; align-items: center; gap: 11px; z-index: 3; border: 1px solid rgba(247,244,238,.98); background: rgba(247,244,238,.79); box-shadow: 0 14px 36px rgba(49,92,135,.12); backdrop-filter: blur(13px); border-radius: 12px; padding: 11px 13px; white-space: nowrap; animation: floatY 7s ease-in-out infinite; }
+    .network-label .label-icon { display: grid; place-items: center; width: 31px; height: 31px; border-radius: 8px; background: #F7F4EE; color: #315C87; font-weight: 800; font-size: .64rem; }
+    .network-label b { display: block; font-size: .73rem; color: #315C87; }
+    .network-label small { display: block; color: #9CCFE3; font-size: .61rem; margin-top: 2px; }
+    .label-jp { top: 15%; left: 5%; }
+    .label-en { top: 10%; right: 7%; animation-delay: -2s; }
+    .label-ai { top: 47%; right: -5%; animation-delay: -3s; }
+    .label-zh { bottom: 17%; left: 0; animation-delay: -1.4s; }
+    .label-human { bottom: 11%; right: 6%; animation-delay: -4s; }
+    .visual-caption { position:absolute; right:16px; bottom:-5px; color:#9CCFE3; font-size:.64rem; font-weight:700; letter-spacing:.17em; }
+    .section-index { display: flex; gap: 14px; align-items: center; font-size: .73rem; color: #5B5B58; font-weight: 600; letter-spacing: .16em; margin-bottom: 23px; }
+    .section-index::after { content: ''; width: 48px; height: 1px; background: #EAE5DA; }
+    .about-intro { display: grid; grid-template-columns: .96fr 1.04fr; gap: 90px; align-items: start; }
+    .about-intro .section-heading { max-width: 460px; }
+    .about-copy { padding-top: 42px; font-size: .97rem; line-height: 2.14; color: var(--muted); }
+    .about-copy p + p { margin-top: 17px; }
+    .about-copy strong { color: #315C87; font-weight: 700; }
+    .capabilities { display: grid; grid-template-columns: repeat(6,minmax(0,1fr)); gap: 15px; margin-top: 58px; }
+    .capability { grid-column: span 2; background: linear-gradient(158deg,#fff,#F7F4EE); border: 1px solid #EAE5DA; padding: 29px 26px 27px; border-radius: 18px; min-height: 255px; transition: transform .3s,border-color .3s,box-shadow .3s; }
+    .capability:nth-child(1), .capability:nth-child(2) { grid-column: span 3; min-height: 218px; }
+    .capability:hover { transform: translateY(-5px); border-color: #EAE5DA; box-shadow: var(--shadow); }
+    .cap-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 27px; }
+    .cap-no { font-family:'Inter',sans-serif; font-size: .76rem; color:#9CCFE3; font-weight: 700; }
+    .cap-icon { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 12px; background: #F7F4EE; color: #315C87; }
+    .cap-icon svg { width: 19px; height: 19px; }
+    .capability h3 { font-size: 1.07rem; line-height:1.6; font-weight: 700; margin-bottom: 6px; }
+    .capability h3 span { display:block; font-family: 'Inter',sans-serif; color: #9CCFE3; font-size:.67rem; font-weight: 600; letter-spacing:.04em; margin-bottom:6px; }
+    .capability p { font-size: .83rem; color:#5B5B58; line-height:1.85; }
+    .philosophy { margin-top: 63px; padding: 47px 60px; background: linear-gradient(110deg,#F7F4EE,#F7F4EE 70%,#F7F4EE); border:1px solid #F7F4EE; border-radius:22px; position: relative; overflow:hidden; }
+    .philosophy::after { content:'言'; position:absolute; right:55px; top:-71px; font: 250px/.95 'Noto Serif TC',serif; color:rgba(49,92,135,.055); }
+    .philosophy small { position:relative;z-index:1; letter-spacing:.18em; font-size:.67rem; font-weight:700; color:#315C87; }
+    .philosophy p { position:relative;z-index:1; font-family:'Noto Serif TC',serif; font-weight:600; color:#5B5B58; font-size:clamp(1.15rem,2.5vw,1.8rem); letter-spacing:.05em; line-height:1.8; margin-top:14px; }
+    .service { background: linear-gradient(180deg,#F7F4EE 0,#F7F4EE 70%,#F7F4EE 100%); overflow:hidden; }
+    .service::before { content: ''; position:absolute; width:750px; height:750px; border-radius:50%; left:-550px; top:100px; background:radial-gradient(circle,rgba(49,92,135,.6),transparent 68%); pointer-events:none; }
+    .service-header { display:grid; grid-template-columns: 1fr .85fr; gap:90px; align-items:end; margin-bottom: 48px; }
+    .service-header .section-heading { margin-bottom:0; }
+    .service-header .section-lede { font-size:.94rem; }
+    .service-features { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:17px; }
+    .service-feature { border-radius:20px; background:#fff; padding:35px 29px; border:1px solid #EAE5DA; box-shadow:0 14px 36px rgba(49,92,135,.035); transition:transform .3s,box-shadow .3s; }
+    .service-feature:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+    .service-feature .feature-symbol { width:50px; height:50px; display:grid; place-items:center; border-radius:15px; background:linear-gradient(140deg,#F7F4EE,#F7F4EE); color:#315C87; margin-bottom:30px; }
+    .service-feature .feature-symbol svg { width:23px;height:23px; }
+    .service-feature .feature-symbol .fa-solid { font-size:23px; }
+    .solution-en { display:block; font-family:'Inter',sans-serif; font-size:.76rem; font-weight:500; color:var(--muted); line-height:1.7; margin-top:9px; }
+    .contact-panel { display:flex; flex-wrap:wrap; align-items:center; gap:40px; padding:clamp(24px,5vw,56px); border:1px solid var(--line); border-radius:var(--radius); background:linear-gradient(125deg,#F7F4EE,#F7F4EE); box-shadow:var(--shadow); }
+    .contact-intro { flex:1 1 300px; min-width:0; }
+    .contact-intro .section-heading { font-size:clamp(2rem,4vw,3rem); }
+    .contact-form-card { flex:1 1 280px; min-width:0; padding:30px; border:1px solid var(--line); border-radius:18px; background:var(--white); }
+    .contact-form-icon { display:grid; place-items:center; width:54px; height:54px; margin-bottom:22px; border-radius:15px; background:#F7F4EE; color:var(--blue); font-size:24px; }
+    .contact-form-card h3 { margin:0 0 12px; font-size:1.25rem; font-weight:700; }
+    .contact-form-card p { margin:0 0 24px; color:var(--muted); font-size:.9rem; line-height:1.9; }
+    .contact-form-card .btn { max-width:100%; white-space:normal; }
+    .contact-form-note { display:block; margin-top:14px; color:var(--muted); font-size:.75rem; }
+    .feature-code { font-size:.65rem; font-weight:700; color:#9CCFE3; letter-spacing:.12em; }
+    .service-feature h3 { font-size:1.11rem; line-height:1.5; font-weight:700; margin:9px 0 13px; }
+    .service-feature p { font-size:.83rem; line-height:2; color:#5B5B58; }
+    .workflow-panel { margin-top:57px; border:1px solid #F7F4EE; border-radius:23px; background:#fff; padding:40px 32px 34px; box-shadow:0 20px 60px rgba(49,92,135,.065); }
+    .workflow-head { display:flex; justify-content:space-between; gap:20px; align-items:baseline; margin:0 0 35px; }
+    .workflow-head h3 { font-size:1.14rem; font-weight:700; }
+    .workflow-head p { font-size:.75rem; font-family:Inter,sans-serif; letter-spacing:.055em; color:#9CCFE3; }
+    .workflow { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:10px; list-style:none; padding:0; margin:0; counter-reset:step; }
+    .workflow li { position:relative; text-align:center; opacity:.68; transform:translateY(4px); transition:opacity .5s,transform .5s; }
+    .workflow li:not(:last-child)::after { content:''; position:absolute; width:calc(100% - 61px); height:1px; border-top:1px dashed #9CCFE3; top:27px; left:calc(50% + 31px); }
+    .workflow li::before { content:'›'; position:absolute; right:-9px; top:15px; color:#9CCFE3; font-size:1.2rem; font-weight:600; }
+    .workflow li:last-child::before { display:none; }
+    .workflow-number { width:54px;height:54px;border-radius:17px;background:#F7F4EE;border:1px solid #EAE5DA;display:grid;place-items:center;margin:0 auto 17px;color:#315C87; box-shadow:0 0 0 6px #fff; position:relative; z-index:1; transition:background .45s,color .45s,box-shadow .45s; }
+    .workflow-number svg { width:22px;height:22px; }
+    .workflow li h4 { font-size:.78rem;font-weight:700;line-height:1.55; }
+    .workflow li small { font-size:.59rem; color:#9CCFE3;font-family:Inter,sans-serif; display:block; margin-top:4px; }
+    .workflow li p { font-size:.68rem; color:#5B5B58;line-height:1.65;margin-top:9px; }
+    .workflow-panel.is-visible .workflow li { opacity:1;transform:translateY(0); }
+    .workflow-panel.is-visible .workflow li .workflow-number { background:linear-gradient(145deg,#F7F4EE,#F7F4EE);color:#315C87;box-shadow:0 0 0 6px #fff,0 9px 23px rgba(49,92,135,.13); }
+    .workflow-panel.is-visible .workflow li:nth-child(2),.workflow-panel.is-visible .workflow li:nth-child(2) .workflow-number{transition-delay:.19s}
+    .workflow-panel.is-visible .workflow li:nth-child(3),.workflow-panel.is-visible .workflow li:nth-child(3) .workflow-number{transition-delay:.38s}
+    .workflow-panel.is-visible .workflow li:nth-child(4),.workflow-panel.is-visible .workflow li:nth-child(4) .workflow-number{transition-delay:.57s}
+    .workflow-panel.is-visible .workflow li:nth-child(5),.workflow-panel.is-visible .workflow li:nth-child(5) .workflow-number{transition-delay:.76s}
+    .workflow-panel.is-visible .workflow li:nth-child(6),.workflow-panel.is-visible .workflow li:nth-child(6) .workflow-number{transition-delay:.95s}
+    .service-bottom { display:flex; justify-content:space-between; align-items:center; gap:25px; flex-wrap:wrap; margin-top:32px; }
+    .value-chips {display:flex;align-items:center;flex-wrap:wrap;gap:11px;}
+    .value-chips span {font-size:.7rem;font-family:Inter,'Noto Sans TC',sans-serif; font-weight:700; color:#315C87; border:1px solid #EAE5DA;border-radius:100px;padding:10px 14px;background:rgba(247,244,238,.8);}
+    .section-heading-row { display:flex;justify-content:space-between;align-items:end;gap:36px;margin-bottom:44px; }
+    .section-heading-row .section-heading { max-width:640px; margin-bottom:0; }
+    .section-heading-row .section-lede { max-width:320px;font-size:.87rem;line-height:2; }
+    .work-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;}
+    .work-card {border:1px solid #EAE5DA;border-radius:20px;background:#fff;overflow:hidden; transition:transform .32s,box-shadow .32s,border-color .32s;}
+    .work-card:hover {transform:translateY(-5px);box-shadow:var(--shadow);border-color:#EAE5DA;}
+    .art {height:210px;overflow:hidden;position:relative;isolation:isolate;display:grid;place-items:center;}
+    .art::after {content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(247,244,238,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(247,244,238,.08) 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(90deg,transparent,#000 60%);pointer-events:none;}
+    .art-translation {background:linear-gradient(120deg,#F7F4EE,#F7F4EE);}
+    .art-termbase {background:linear-gradient(125deg,#F7F4EE,#F7F4EE);}
+    .art-workflow {background:linear-gradient(125deg,#F7F4EE,#F7F4EE);}
+    .art-quality {background:linear-gradient(125deg,#F7F4EE,#F7F4EE);}
+    .art-frame {position:relative;width:72%;height:71%;border:1px solid rgba(247,244,238,.94);border-radius:13px;background:rgba(247,244,238,.38);box-shadow:0 18px 45px rgba(49,92,135,.09);display:flex;align-items:center;justify-content:center;gap:19px;backdrop-filter:blur(5px);}
+    .art-kanji {font-family:'Noto Serif TC',serif;font-size:clamp(2.7rem,5vw,4.3rem);font-weight:600;color:#315C87;letter-spacing:.04em;}
+    .art-arrows {display:flex;align-items:center;color:#E9C7C7;}
+    .art-arrows svg {width:31px;height:31px;}
+    .art-words {font-family:'Noto Serif TC',serif;font-size:clamp(2.7rem,5vw,4.3rem);font-weight:600;color:#E9C7C7;}
+    .term-stack {display:flex;flex-direction:column;gap:9px;width:69%;}
+    .term-line {display:flex;align-items:center;justify-content:space-between;padding:10px 16px;border:1px solid #fff;background:rgba(247,244,238,.7);border-radius:8px;font:700 .76rem Inter,'Noto Sans TC',sans-serif;color:#315C87;box-shadow:0 6px 18px rgba(49,92,135,.04);}
+    .term-line span:last-child {font-weight:500;color:#9CCFE3;}
+    .art-processing .process-track {display:flex;align-items:center;gap:11px;}
+    .process-track span {display:grid;place-items:center;width:56px;height:56px;border-radius:15px;border:1px solid #fff;background:rgba(247,244,238,.75);font-size:.72rem;font-weight:800;color:#315C87;box-shadow:0 8px 28px rgba(49,92,135,.07);}
+    .process-track svg {width:18px;height:18px;color:#E9C7C7;}
+    .quality-visual {width:125px;height:125px;border:1px solid rgba(247,244,238,.9);background:rgba(247,244,238,.68);border-radius:50%;display:grid;place-items:center;box-shadow:0 17px 50px rgba(49,92,135,.1);}
+    .quality-visual svg {width:57px;height:57px;color:#A8BD7A;stroke-width:1.4;}
+    .quality-visual::after {content:'QA  •  REVIEW';position:absolute;bottom:15px;font-size:.61rem;letter-spacing:.19em;font-weight:700;color:#5B5B58;}
+    .work-body {padding:27px 29px 29px;}
+    .kicker {font-size:.7rem;font-weight:700;letter-spacing:.07em;color:#5B5B58;}
+    .work-body h3 {font-size:1.2rem;font-weight:700;line-height:1.6;margin:11px 0 8px;}
+    .work-body p {color:#5B5B58;line-height:1.9;font-size:.85rem;min-height:53px;}
+    .work-body .text-link {margin-top:16px;}
+    .work-disclaimer {margin-top:20px;font-size:.73rem;line-height:1.9;color:#5B5B58;}
+    .blog {background:linear-gradient(180deg,#F7F4EE,#fff);}
+    .blog-grid {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;}
+    .blog-card {display:flex;flex-direction:column;background:#fff;border:1px solid #EAE5DA;border-radius:17px;overflow:hidden;transition:transform .3s,box-shadow .3s;}
+    .blog-card:hover {transform:translateY(-5px);box-shadow:var(--shadow);}
+    .blog-cover {height:172px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+    .blog-cover--one {background:linear-gradient(145deg,#F7F4EE,#EAE5DA);}
+    .blog-cover--two {background:linear-gradient(145deg,#F7F4EE,#EAE5DA);}
+    .blog-cover--three {background:linear-gradient(145deg,#F7F4EE,#EAE5DA);}
+    .blog-cover--four {background:linear-gradient(145deg,#F7F4EE,#F7F4EE);}
+    .blog-cover .cover-type {font:600 4.55rem 'Noto Serif TC',serif;color:rgba(49,92,135,.17);position:relative;z-index:1;transform:rotate(-7deg);}
+    .blog-cover::before {content:'';position:absolute;inset:20px 20px auto auto;width:95px;height:95px;border:1px solid rgba(247,244,238,.72);border-radius:50%;}
+    .blog-cover::after {content:'';position:absolute;bottom:27px;left:28px;width:95px;height:1px;background:rgba(49,92,135,.35);box-shadow:0 7px rgba(49,92,135,.24),0 14px rgba(49,92,135,.15);}
+    .blog-cover .cover-small {position:absolute;left:28px;top:23px;color:#5B5B58;font:700 .62rem Inter,sans-serif;letter-spacing:.16em;}
+    .blog-body {padding:24px 22px 26px;display:flex;flex-direction:column;flex:1;}
+    .blog-body .kicker {font-size:.63rem;}
+    .blog-body h3 {font-size:1.03rem;font-weight:700;line-height:1.72;margin:15px 0 10px;min-height:88px;}
+    .blog-body p {font-size:.79rem;line-height:1.95;color:#5B5B58;flex:1;}
+    .blog-body .text-link {margin-top:22px;font-size:.8rem;}
+    .coming {margin-top:22px;color:#9CCFE3;font-size:.76rem;font-weight:600;}
+    .consult {padding:105px 0;background:white;}
+    .consult-shell {position:relative;overflow:hidden;border-radius:30px;padding:76px 60px 68px;text-align:center;background:radial-gradient(circle at 18% 30%,rgba(49,92,135,.92),transparent 38%),radial-gradient(circle at 83% 25%,rgba(49,92,135,.8),transparent 42%),linear-gradient(110deg,#F7F4EE,#F7F4EE);border:1px solid #F7F4EE;}
+    .consult-shell::before,.consult-shell::after {content:'';position:absolute;border:1px solid rgba(49,92,135,.16);border-radius:50%;width:480px;height:480px;pointer-events:none;}
+    .consult-shell::before {left:-340px;top:-270px;}.consult-shell::after{right:-350px;bottom:-310px;}
+    .consult-shell .overline {position:relative;z-index:1;}
+    .consult-shell h2 {position:relative;z-index:1;font-size:clamp(2.05rem,4.4vw,3.55rem);font-weight:700;line-height:1.47;letter-spacing:-.055em;margin:21px auto 13px;max-width:800px;}
+    .consult-en {font-size:.86rem;letter-spacing:.03em;color:#5B5B58;font-weight:600;}
+    .consult-shell p:not(.consult-en) {position:relative;z-index:1;max-width:650px;margin:24px auto 28px;font-size:.94rem;line-height:2.05;color:#5B5B58;}
+    .consult-button {display:inline-flex;position:relative;align-items:center;justify-content:center;gap:12px;background:rgba(247,244,238,.87);color:#315C87;border-radius:15px;padding:18px 29px;min-height:58px;font-size:1rem;font-weight:800;border:1.5px solid #E9C7C7;box-shadow:0 13px 32px rgba(49,92,135,.12);transition:transform .28s,background .28s,border-color .28s,box-shadow .28s;}
+    .consult-button::before {content:'';position:absolute;inset:-3px;border-radius:17px;background:linear-gradient(120deg,rgba(49,92,135,.23),rgba(49,92,135,.22),rgba(49,92,135,.25));z-index:-1;filter:blur(5px);}
+    .consult-button:hover {transform:translateY(-4px);background:linear-gradient(120deg,#fff,#F7F4EE);border-color:var(--mint);box-shadow:0 17px 40px rgba(49,92,135,.17);}
+    .consult-button svg {width:20px;height:20px;}
+    .consult-status {display:block;font-size:.67rem;color:#A8BD7A;font-weight:700;letter-spacing:.085em;margin-top:13px;opacity:0;transform:translateY(-3px);transition:opacity .23s,transform .23s;}
+    .consult-action:hover .consult-status,.consult-action:focus-within .consult-status {opacity:1;transform:translateY(0);}
+    .site-footer {background:#F7F4EE;border-top:1px solid #EAE5DA;padding:67px 0 27px;}
+    .footer-grid {display:grid;grid-template-columns:1.2fr .75fr .8fr;gap:85px;}
+    .footer-about p {max-width:310px;margin-top:23px;font-size:.82rem;color:#5B5B58;line-height:2;}
+    .footer-title {font-size:.76rem;font-weight:800;color:#315C87;margin:4px 0 24px;letter-spacing:.05em;}
+    .footer-links {display:grid;gap:15px;}
+    .footer-links a {font-size:.83rem;color:#5B5B58;transition:color .2s;}
+    .footer-links a:hover{color:var(--blue);}
+    .footer-contact p {font-size:.81rem;color:#5B5B58;line-height:1.95;margin-bottom:10px;}
+    .placeholder {display:block;color:#9CCFE3;font-size:.76rem;padding:10px 12px;background:#fff;border:1px dashed #9CCFE3;border-radius:8px;margin-top:13px;max-width:240px;}
+    .footer-bottom {margin-top:64px;border-top:1px solid #EAE5DA;padding-top:22px;display:flex;gap:14px;justify-content:space-between;flex-wrap:wrap;color:#9CCFE3;font-size:.7rem;}
+    .back-to-top {position:fixed;bottom:26px;right:26px;z-index:50;width:46px;height:46px;display:grid;place-items:center;border-radius:14px;border:1px solid #EAE5DA;background:#fff;color:#315C87;box-shadow:0 9px 35px rgba(49,92,135,.12);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .25s,transform .25s,visibility .25s;}
+    .back-to-top.show {opacity:1;visibility:visible;transform:translateY(0);}
+    .back-to-top svg {width:20px;height:20px;}
+    .detail-dialog {margin:auto;max-width:min(750px,calc(100vw - 32px));width:100%;max-height:min(86vh,920px);padding:0;border:1px solid #EAE5DA;border-radius:20px;background:#fff;box-shadow:0 30px 100px rgba(49,92,135,.23);overflow:auto;color:var(--ink);}
+    .detail-dialog::backdrop {background:rgba(49,92,135,.57);backdrop-filter:blur(6px);}
+    .dialog-inner {padding:46px 48px 46px;position:relative;}
+    .dialog-close {position:absolute;top:22px;right:23px;display:grid;place-items:center;width:40px;height:40px;border:1px solid #EAE5DA;background:#F7F4EE;border-radius:12px;color:#5B5B58;}
+    .dialog-close:hover{background:#F7F4EE;}
+    .dialog-close svg {width:19px;height:19px;}
+    .dialog-kicker {font:700 .73rem Inter,'Noto Sans TC',sans-serif;letter-spacing:.1em;color:#315C87;margin:0 45px 15px 0;}
+    .detail-dialog h2 {font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.48;letter-spacing:-.04em;font-weight:700;margin:0 42px 22px 0;}
+    .dialog-content {font-size:.93rem;line-height:2.08;color:#5B5B58;}
+    .dialog-content h3 {color:#315C87;font-size:1.08rem;font-weight:700;margin:27px 0 8px;}
+    .dialog-content p + p {margin-top:13px;}
+    .dialog-content ul {padding-left:22px;list-style:disc;}
+    .dialog-content li + li {margin-top:6px;}
+    .dialog-note {font-size:.79rem;color:#5B5B58;background:#F7F4EE;padding:14px 17px;border-radius:9px;margin-top:26px;}
+    .js-ready .reveal {opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.65,.2,1);}
+    .js-ready .reveal.is-visible {opacity:1;transform:translateY(0);}
+    /* Brand palette: paper surfaces, water and indigo identity, restrained craft accents. */
+    body, .consult { background:var(--paper); }
+    ::selection { background:var(--pink); color:var(--indigo); }
+    :focus-visible { outline-color:var(--lacquer); }
+    .site-header { background:rgba(247,244,238,.92); border-color:var(--line); }
+    .hero { background:radial-gradient(ellipse at 77% 26%,rgba(156,207,227,.4),transparent 46%),radial-gradient(ellipse at 24% 74%,rgba(168,189,122,.17),transparent 42%),var(--paper); }
+    .gradient-text, .orbital-core .core-jp { background-image:linear-gradient(105deg,var(--indigo),var(--wood)); }
+    .section--soft, .service { background:linear-gradient(180deg,var(--paper),#EAE5DA,var(--paper)); }
+    .service::before { background:radial-gradient(circle,rgba(156,207,227,.3),transparent 68%); }
+    .brand-mark, .cap-icon, .service-feature .feature-symbol, .contact-form-icon, .network-label .label-icon { background:rgba(156,207,227,.25); color:var(--indigo); border-color:var(--line); }
+    .status-dot { background:var(--bamboo); box-shadow:0 0 0 4px rgba(168,189,122,.2); }
+    .btn-primary, .nav-cta, .mobile-nav .mobile-cta { background:var(--indigo); color:var(--paper); }
+    .btn-primary:hover, .nav-cta:hover, .mobile-nav .mobile-cta:hover { background:var(--lacquer); color:var(--paper); }
+    .btn-secondary { background:transparent; border-color:var(--gold); color:var(--wood); }
+    .btn-secondary:hover { background:rgba(200,165,107,.15); border-color:var(--wood); }
+    .text-link, .overline, .dialog-kicker { color:var(--indigo); }
+    .text-link:hover { color:var(--lacquer); }
+    .section-index, .feature-code, .cap-no, .kicker, .cover-small { color:var(--wood); }
+    .section-index::after { background:var(--gold); }
+    .capability, .service-feature, .work-card, .blog-card, .workflow-panel, .contact-form-card, .detail-dialog, .back-to-top { background:var(--paper); border-color:var(--line); }
+    .capability:hover, .work-card:hover { border-color:var(--gold); }
+    .philosophy, .contact-panel { background:linear-gradient(120deg,var(--paper),rgba(168,189,122,.15),rgba(200,165,107,.14)); border-color:var(--line); }
+    .philosophy small { color:var(--wood); }
+    .blog { background:var(--paper); }
+    .blog-cover--one, .art-translation { background:linear-gradient(135deg,var(--paper),var(--water)); }
+    .blog-cover--two, .art-termbase { background:linear-gradient(135deg,var(--paper),var(--bamboo)); }
+    .blog-cover--three, .art-workflow { background:linear-gradient(135deg,var(--paper),var(--pink)); }
+    .blog-cover--four, .art-quality { background:linear-gradient(135deg,var(--paper),var(--gold)); }
+    .cover-type, .art-kanji, .art-words { color:var(--indigo); }
+    .consult-shell { background:radial-gradient(circle at 18% 30%,rgba(156,207,227,.3),transparent 45%),radial-gradient(circle at 83% 25%,rgba(168,189,122,.22),transparent 45%),var(--paper); border-color:var(--gold); }
+    .consult-button { background:var(--indigo); color:var(--paper); border-color:var(--gold); }
+    .consult-button:hover { background:var(--lacquer); color:var(--paper); border-color:var(--lacquer); }
+    .consult-status { color:var(--wood); }
+    .site-footer { background:#EAE5DA; }
+    .footer-links a:hover { color:var(--lacquer); }
+    @keyframes flowLine {to{stroke-dashoffset:-160;}}
+    @keyframes floatY {0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+    @keyframes caretPulse {50%{opacity:0}}
+    @keyframes fadeCaret {0%,45%{opacity:1}100%{opacity:0}}
+    @media (max-width:1100px) {
+      .desktop-nav {gap:14px;}.desktop-nav a:not(.nav-cta){font-size:.75rem;}.nav-cta{padding:11px 12px;}
+      .hero h1{font-size:clamp(3.2rem,5.6vw,4.9rem);}
+      .hero-visual{transform:scale(.91);transform-origin:center;}
+      .blog-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+      .blog-body h3{min-height:auto;}
+      .service-feature{padding:29px 24px;}
+    }
+    @media (max-width:850px) {
+      :root {--nav-height:70px;}
+      .container{width:min(100% - 44px,690px);}
+      .desktop-nav{display:none;}.menu-toggle{display:flex;}
+      .mobile-nav{display:none;position:absolute;left:0;right:0;top:var(--nav-height);background:rgba(247,244,238,.98);border-bottom:1px solid #F7F4EE;padding:12px 22px 22px;box-shadow:0 20px 30px rgba(49,92,135,.09);}
+      .mobile-nav.is-open{display:block;}
+      .mobile-nav a{display:flex;align-items:center;justify-content:space-between;padding:13px 12px;border-radius:10px;color:#5B5B58;font-size:.91rem;font-weight:600;min-height:46px;}
+      .mobile-nav a:hover,.mobile-nav a[aria-current="location"]{background:#F7F4EE;color:#315C87;}
+      .mobile-nav .mobile-cta{margin-top:10px;background:#315C87;color:#fff;justify-content:center;}
+      .hero{padding:59px 0 65px;min-height:0;}
+      .hero-grid{display:flex;flex-direction:column;align-items:stretch;gap:10px;min-height:0;}
+      .hero-copy{text-align:center;}.hero h1 .line{margin-inline:auto;}
+      .hero h1{font-size:clamp(3.1rem,9vw,5.05rem);}
+      .hero-description{margin-left:auto;margin-right:auto;}.hero-actions,.hero-tags{justify-content:center;}
+      .hero-tags{margin-top:27px;}.hero-visual{height:490px;transform:scale(.88);margin-top:-18px;}
+      .about-intro,.service-header{grid-template-columns:1fr;gap:12px;}
+      .about-copy{padding-top:0;}.capabilities{margin-top:38px;}
+      .service-header{margin-bottom:33px;}
+      .service-features{grid-template-columns:1fr;gap:14px;}
+      .service-feature{display:grid;grid-template-columns:64px 1fr;column-gap:12px;padding:24px;}
+      .service-feature .feature-symbol{grid-row:1/5;margin:0;}.service-feature .feature-code{align-self:end;}
+      .service-feature h3{margin:6px 0;}
+      .workflow{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:35px;}
+      .workflow li:nth-child(3)::before,.workflow li:nth-child(3)::after{display:none;}
+      .section-heading-row{display:block;}.section-heading-row .section-lede{margin-top:17px;max-width:540px;}
+      .footer-grid{gap:35px;grid-template-columns:1.1fr .75fr;}.footer-contact{grid-column:1/-1;}
+    }
+    @media (max-width:600px) {
+      .container{width:calc(100% - 36px);}
+      .section{padding:79px 0;}
+      .section-heading{font-size:clamp(1.85rem,8vw,2.65rem);letter-spacing:-.055em;margin:17px 0;}
+      .section-lede{font-size:.94rem;line-height:1.96;}
+      .brand-mark{width:38px;height:38px;}.brand-copy strong{font-size:.75rem;}
+      .hero{padding:45px 0 65px;}
+      .hero h1{font-size:clamp(2.75rem,11.3vw,4.05rem);line-height:1.42;margin:24px 0 14px;letter-spacing:-.079em;}
+      .hero-en{font-size:.7rem;margin-bottom:18px;}
+      .hero-description{font-size:.9rem;line-height:1.95;}
+      .hero-actions{flex-direction:column;gap:10px;}.hero-actions .btn{width:100%;}
+      .hero-tags{margin-top:27px;font-size:.57rem;gap:8px;}
+      .hero-tags span{gap:8px;}
+      .hero-visual{height:350px;transform:none;display:block;margin:6px auto -2px;width:100%;}
+      .visual-stage{width:min(360px,calc(100vw - 16px));height:auto;aspect-ratio:1;left:50%;transform:translateX(-50%);}
+      .orbital-core{width:153px;height:153px;}.core-glyph{font-size:2.6rem;margin-bottom:10px;}
+      .orbital-core strong{font-size:.42rem;}.orbital-core small{font-size:.46rem;margin-top:5px;}
+      .network-label{padding:7px 8px;gap:6px;border-radius:9px;}
+      .network-label .label-icon{width:22px;height:22px;font-size:.43rem;}
+      .network-label b{font-size:.54rem;}.network-label small{font-size:.46rem;}
+      .label-jp{top:16%;left:5%;}.label-en{top:10%;right:6%;}.label-ai{right:0;top:50%;}.label-zh{left:0;bottom:18%;}.label-human{bottom:10%;right:7%;}
+      .visual-caption{right:14px;bottom:4px;font-size:.49rem;}
+      .about-copy{font-size:.89rem;line-height:2.05;}
+      .capabilities{display:block;}.capability{min-height:0!important;margin-bottom:13px;padding:24px;}.cap-top{margin-bottom:15px;}
+      .capability h3{font-size:1.03rem;}.capability p{font-size:.81rem;}
+      .philosophy{padding:31px 25px;margin-top:33px;}.philosophy::after{font-size:180px;right:-35px;top:-35px;}.philosophy p{font-size:1.13rem;}
+      .service-feature{display:block;}.service-feature .feature-symbol{margin-bottom:18px;}.service-feature h3{font-size:1.04rem;}
+      .workflow-panel{padding:28px 21px;margin-top:31px;}
+      .workflow-head{display:block;margin-bottom:25px;}.workflow-head p{margin-top:7px;font-size:.68rem;}
+      .workflow{grid-template-columns:1fr;gap:0;}
+      .workflow li{text-align:left;min-height:100px;padding:0 0 24px 77px;}
+      .workflow li .workflow-number{position:absolute;left:0;top:0;width:52px;height:52px;margin:0;}
+      .workflow li::before{content:'↓';left:17px;right:auto;top:60px;font-size:1rem;}
+      .workflow li:not(:last-child)::after{width:1px;height:37px;border-top:0;border-left:1px dashed #9CCFE3;left:26px;top:59px;}
+      .workflow li:nth-child(3)::before,.workflow li:nth-child(3)::after{display:block;}
+      .workflow li h4{padding-top:4px;font-size:.82rem;}.workflow li small{font-size:.65rem;}.workflow li p{margin-top:7px;font-size:.72rem;}.workflow li:last-child{min-height:64px;padding-bottom:0;}
+      .service-bottom{align-items:stretch;}.service-bottom .btn{width:100%;}.value-chips{gap:7px;}.value-chips span{font-size:.64rem;padding:9px 11px;}
+      .work-grid,.blog-grid{grid-template-columns:1fr;gap:17px;}
+      .art{height:185px;}.work-body{padding:24px;}.work-body p{min-height:auto;}
+      .blog-cover{height:163px;}.blog-body{padding:22px 24px 26px;}
+      .consult{padding:70px 0;}.consult-shell{padding:58px 23px 52px;border-radius:24px;}.consult-shell h2{font-size:1.95rem;}.consult-shell p:not(.consult-en){font-size:.85rem;}.consult-en{font-size:.73rem;}
+      .consult-button{width:100%;font-size:.91rem;padding-inline:9px;}
+      .consult-status{opacity:1;transform:none;}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:28px;}.footer-about{grid-column:1/-1;}.footer-contact{grid-column:1/-1;}
+      .footer-bottom{margin-top:45px;}.back-to-top{right:16px;bottom:16px;}
+      .dialog-inner{padding:34px 23px;}.dialog-close{top:16px;right:15px;}.detail-dialog h2{margin-right:40px;}.dialog-content{font-size:.88rem;}
+    }
+    @media (max-width:365px) {
+      .hero h1{font-size:2.64rem;}.hero-tags{gap:5px;font-size:.51rem;}.visual-stage{width:min(320px,calc(100vw - 14px));height:auto;}.hero-visual{height:313px;}.network-label{padding:6px;}
+      .label-ai{right:-1%;}.label-human{right:2%;}.label-jp{left:1%;}
+      .brand-copy small{font-size:.59rem;}
+    }
+    @media (prefers-reduced-motion:reduce) {
+      *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;}
+      .js-ready .reveal{opacity:1!important;transform:none!important;}
+      .network-label{transform:none;}
+      .workflow li{opacity:1;transform:none;}
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:p-3 focus:rounded-lg">跳至主要內容</a>
+  <header class="site-header" id="siteHeader">
+    <div class="container nav-inner">
+      <a href="#home" class="brand" aria-label="回到首頁">
+        <span class="brand-mark" aria-hidden="true">文</span>
+        <span class="brand-copy"><strong>LANGUAGE × AI</strong><small>HUMAN-CENTERED EXPERTISE</small></span>
+      </a>
+      <nav class="desktop-nav" aria-label="主要導覽">
+        <a href="#home" data-nav="home" aria-current="location">首頁</a>
+        <a href="#about" data-nav="about">關於我</a>
+        <a href="#service" data-nav="service">AI + PE 服務</a>
+        <a href="#work" data-nav="work">應用案例</a>
+        <a href="#journal" data-nav="journal">觀點文章</a>
+        <a href="#contact" data-nav="contact">聯絡我</a>
+        <a class="nav-cta" href="https://calendar.app.google/rvC5xPsN5ezAk82AA" target="_blank" rel="noopener noreferrer">預約諮詢 ↗</a>
+      </nav>
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="開啟導覽選單" aria-controls="mobileNav" aria-expanded="false"><span class="menu-glyph" aria-hidden="true"></span></button>
+    </div>
+    <nav id="mobileNav" class="mobile-nav" aria-label="手機導覽" inert>
+      <a href="#home" data-nav="home" aria-current="location">首頁 <span aria-hidden="true">↗</span></a>
+      <a href="#about" data-nav="about">關於我 <span aria-hidden="true">↗</span></a>
+      <a href="#service" data-nav="service">AI + PE 服務 <span aria-hidden="true">↗</span></a>
+      <a href="#work" data-nav="work">應用案例 <span aria-hidden="true">↗</span></a>
+      <a href="#journal" data-nav="journal">觀點文章 <span aria-hidden="true">↗</span></a>
+      <a href="#contact" data-nav="contact">聯絡我 <span aria-hidden="true">↗</span></a>
+      <a class="mobile-cta" href="https://calendar.app.google/rvC5xPsN5ezAk82AA" target="_blank" rel="noopener noreferrer">預約專業諮詢 ↗</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="heroHeading">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><span class="status-dot" aria-hidden="true"></span> LANGUAGE × AI × HUMAN EXPERTISE</span>
+          <h1 id="heroHeading" aria-label="AI 的效率，人的專業。">
+            <span class="line"><span class="measure gradient-text" aria-hidden="true">AI 的效率，</span><span class="typed gradient-text" id="typedFirst" aria-hidden="true"></span></span>
+            <span class="line"><span class="measure" aria-hidden="true">人的專業。</span><span class="typed" id="typedSecond" aria-hidden="true"></span></span>
+          </h1>
+          <p class="hero-en">Where AI Efficiency Meets Human Expertise.</p>
+          <p class="hero-description">在語言、科技與文化之間，重新定義專業溝通的可能。<br><strong>結合日文翻譯、跨文化理解、AI 技術與專業品質管理</strong>，讓多語內容不只傳遞資訊，更能準確表達價值。</p>
+          <div class="hero-actions">
+            <a href="#service" class="btn btn-primary">探索 AI + PE 服務 <i data-lucide="arrow-up-right" aria-hidden="true"></i></a>
+            <a href="https://calendar.app.google/rvC5xPsN5ezAk82AA" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">預約專業諮詢 <i data-lucide="calendar-days" aria-hidden="true"></i></a>
+          </div>
+          <div class="hero-tags" aria-label="專業領域"><span>JAPANESE TRANSLATION</span><span>HUMAN REVIEW</span><span>AI WORKFLOW</span></div>
+        </div>
+        <div class="hero-visual" aria-label="語言智慧網路示意圖，串連日文、中文、英文、AI 處理、人工審校及品質控管" role="img">
+          <div class="visual-stage" aria-hidden="true">
+            <svg class="network" viewBox="0 0 550 550" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="orbitGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#9CCFE3" stop-opacity=".12"/><stop offset="1" stop-color="#E9C7C7" stop-opacity=".7"/></linearGradient>
+                <radialGradient id="nodeGlow"><stop offset="0" stop-color="#9CCFE3" stop-opacity=".6"/><stop offset="1" stop-color="#EAE5DA" stop-opacity="0"/></radialGradient>
+              </defs>
+              <circle cx="275" cy="275" r="204" class="ring-dashed"/>
+              <circle cx="275" cy="275" r="167" class="ring"/>
+              <circle cx="275" cy="275" r="123" class="ring" stroke-dasharray="2 8"/>
+              <circle cx="275" cy="275" r="240" fill="none" stroke="url(#orbitGrad)" stroke-width=".8"/>
+              <path d="M112 154 L275 275 L416 129 M275 275 L457 289 L401 414 M275 275 L139 419" class="link-line"/>
+              <path d="M112 154 L275 275 L416 129 M275 275 L457 289 L401 414 M275 275 L139 419" class="motion-line"/>
+              <path d="M112 154 Q232 74 416 129 M139 419 Q277 485 401 414" fill="none" stroke="#9CCFE3" stroke-width="1" stroke-dasharray="4 9"/>
+              <circle cx="112" cy="154" r="26" fill="url(#nodeGlow)"/><circle cx="112" cy="154" r="6" class="n-dot"/>
+              <circle cx="416" cy="129" r="7" class="n-dot"/>
+              <circle cx="457" cy="289" r="8" class="n-dot-green"/>
+              <circle cx="139" cy="419" r="7" class="n-dot"/>
+              <circle cx="401" cy="414" r="7" class="n-dot-green"/>
+              <circle cx="275" cy="71" r="3" fill="#9CCFE3"/><circle cx="75" cy="287" r="4" fill="#9CCFE3"/><circle cx="472" cy="393" r="3" fill="#A8BD7A"/><circle cx="218" cy="499" r="4" fill="#9CCFE3"/>
+            </svg>
+            <div class="orbital-core"><span class="core-glyph">言</span><strong>LANGUAGE<br>INTELLIGENCE</strong><small>人 × 語言 × 技術</small></div>
+            <div class="network-label label-jp"><span class="label-icon">JP</span><span><b>日本語</b><small>Context & Nuance</small></span></div>
+            <div class="network-label label-en"><span class="label-icon">EN</span><span><b>English</b><small>Global Content</small></span></div>
+            <div class="network-label label-ai"><span class="label-icon">AI</span><span><b>AI Processing</b><small>Intelligent Workflow</small></span></div>
+            <div class="network-label label-zh"><span class="label-icon">ZH</span><span><b>繁體中文</b><small>Localization</small></span></div>
+            <div class="network-label label-human"><span class="label-icon" style="color:#A8BD7A;background:#EAE5DA">✓</span><span><b>Human Review</b><small>Quality Assurance</small></span></div>
+            <span class="visual-caption">LANGUAGE INTELLIGENCE NETWORK / 01</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="aboutTitle">
+      <div class="container">
+        <div class="about-intro">
+          <div class="reveal">
+            <div class="section-index">01 / ABOUT ME</div>
+            <span class="overline">Human Insight. Digital Possibilities.</span>
+            <h2 class="section-heading" id="aboutTitle">跨越語言與科技，<br><span class="gradient-text">讓專業創造<br>更多可能。</span></h2>
+          </div>
+          <div class="about-copy reveal">
+            <p><strong>你好，歡迎來到我的個人網站！</strong>我是一位熱愛語言、文化與數位科技的終身學習者，擁有翻譯、語言服務及專案管理的實務經驗。</p>
+            <p>在日常工作中，我不只關注譯文是否準確，也重視溝通目的、文化差異、品質管理，以及專案的整體流程。</p>
+            <p>隨著 AI 技術快速發展，我持續探索人工智慧、自動化工具、翻譯記憶庫與術語管理的實際應用。讓科技協助處理繁瑣工作，讓專業人員有更多時間投入語意判斷、文化理解及品質提升。</p>
+            <p>我也喜歡書籍、文字排版、視覺設計與知識整理。因為好的溝通，不只需要精確的內容，更需要清楚、友善且富有美感的呈現方式。</p>
+          </div>
+        </div>
+        <div class="capabilities">
+          <article class="capability reveal"><div class="cap-top"><span class="cap-no">01 / 05</span><span class="cap-icon"><i data-lucide="languages" aria-hidden="true"></i></span></div><h3><span>LANGUAGE & CULTURE</span>語言服務與跨文化溝通</h3><p>日中與多語言專案協作、譯文品質與內容一致性、文化脈絡及客戶需求整合。</p></article>
+          <article class="capability reveal"><div class="cap-top"><span class="cap-no">02 / 05</span><span class="cap-icon"><i data-lucide="brain-circuit" aria-hidden="true"></i></span></div><h3><span>AI & INNOVATION</span>AI 技術與工作流程創新</h3><p>AI 輔助翻譯、譯後編輯、數位工具應用與人機協作流程探索。</p></article>
+          <article class="capability reveal"><div class="cap-top"><span class="cap-no">03 / 05</span><span class="cap-icon"><i data-lucide="library-big" aria-hidden="true"></i></span></div><h3><span>KNOWLEDGE MANAGEMENT</span>知識管理與資訊整合</h3><p>翻譯記憶庫、專業術語、語言資產再利用，以及文件資訊的系統化整理。</p></article>
+          <article class="capability reveal"><div class="cap-top"><span class="cap-no">04 / 05</span><span class="cap-icon"><i data-lucide="panels-top-left" aria-hidden="true"></i></span></div><h3><span>DESIGN & EXPERIENCE</span>設計美學與閱讀體驗</h3><p>字體編排、資訊視覺化、使用者閱讀體驗，以及具有溫度的內容呈現。</p></article>
+          <article class="capability reveal"><div class="cap-top"><span class="cap-no">05 / 05</span><span class="cap-icon"><i data-lucide="sparkles" aria-hidden="true"></i></span></div><h3><span>LIFELONG LEARNING</span>持續學習與跨領域探索</h3><p>保持好奇、實際嘗試新工具、整合不同知識，讓創意逐步成為具體成果。</p></article>
+        </div>
+        <div class="philosophy reveal"><small>MY PHILOSOPHY / 品牌理念</small><p>以語言建立連結，以科技拓展可能，<br>以設計傳遞價值。</p></div>
+      </div>
+    </section>
+
+    <section class="section service" id="service" aria-labelledby="serviceTitle">
+      <div class="container">
+        <div class="service-header">
+          <div class="reveal"><div class="section-index">02 / INTELLIGENT TRANSLATION</div><span class="overline">AI-Powered Translation, Human-Refined Quality</span><h2 class="section-heading" id="serviceTitle">AI + PE<br><span class="gradient-text">智慧翻譯方案</span></h2></div>
+          <div class="reveal"><p class="section-lede">AI 提升效率，專業成就品質。<br>結合客製化 AI 語言模型與專業母語人員的譯後編輯，協助企業兼顧內容處理效率、語意準確性、術語一致性及自然表達。</p></div>
+        </div>
+        <div class="service-features">
+          <article class="service-feature reveal"><span class="feature-symbol"><i data-lucide="sliders-horizontal" aria-hidden="true"></i></span><small class="feature-code">01 / CUSTOM AI LANGUAGE MODELS</small><h3>客製化 AI 語言模型</h3><p>根據產業特性、品牌語調、專業術語與既有語言資產，調整 AI 翻譯的設定與工作流程，讓處理方式更貼近企業需求。</p></article>
+          <article class="service-feature reveal"><span class="feature-symbol"><i data-lucide="scan-eye" aria-hidden="true"></i></span><small class="feature-code">02 / EXPERT HUMAN REVIEW</small><h3>專業母語人員品質把關</h3><p>由相關語言與專業領域人員進行譯後編輯與審校，透過專屬品質控管流程，降低對 AI 原文建議的依賴，保留獨立判斷。</p></article>
+          <article class="service-feature reveal"><span class="feature-symbol"><i data-lucide="workflow" aria-hidden="true"></i></span><small class="feature-code">03 / HUMAN–AI COLLABORATION</small><h3>人機協作，釋放專業價值</h3><p>讓 AI 支援內容處理與資訊整合，讓語言專家專注於文化理解、語意細節、風格調整及品質確認，建立有彈性的協作模式。</p></article>
+        </div>
+        <div class="workflow-panel reveal" id="workflowPanel">
+          <div class="workflow-head"><h3>The Intelligent Translation Workflow</h3><p>從需求到交付，逐步把關</p></div>
+          <ol class="workflow" aria-label="AI 加專業譯後編輯六階段流程">
+            <li><span class="workflow-number"><i data-lucide="clipboard-list" aria-hidden="true"></i></span><h4>需求分析</h4><small>Discovery</small><p>確認語言、用途與標準</p></li>
+            <li><span class="workflow-number"><i data-lucide="book-open-check" aria-hidden="true"></i></span><h4>語言資產整理</h4><small>Language Assets</small><p>整合術語與參考資料</p></li>
+            <li><span class="workflow-number"><i data-lucide="cpu" aria-hidden="true"></i></span><h4>AI 翻譯處理</h4><small>AI Translation</small><p>依專案條件產生譯文</p></li>
+            <li><span class="workflow-number"><i data-lucide="user-round-check" aria-hidden="true"></i></span><h4>母語譯後編輯</h4><small>Human Post-Editing</small><p>審查語意、語氣與自然度</p></li>
+            <li><span class="workflow-number"><i data-lucide="shield-check" aria-hidden="true"></i></span><h4>品質確認</h4><small>Quality Assurance</small><p>檢查一致性與交付條件</p></li>
+            <li><span class="workflow-number"><i data-lucide="send" aria-hidden="true"></i></span><h4>交付成果</h4><small>Delivery</small><p>提交符合需求的內容</p></li>
+          </ol>
+        </div>
+        <div class="service-bottom"><div class="value-chips"><span>AI Efficiency｜智慧效率</span><span>Human Judgment｜專業判斷</span><span>Quality Consistency｜品質一致性</span></div><a class="btn btn-primary" href="https://calendar.app.google/rvC5xPsN5ezAk82AA" target="_blank" rel="noopener noreferrer">預約 AI + PE 方案諮詢 <i data-lucide="arrow-up-right" aria-hidden="true"></i></a></div>
+      </div>
+    </section>
+
+    <section class="section" id="work" aria-labelledby="workTitle">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div><div class="section-index">03 / SELECTED APPLICATIONS</div><span class="overline">Selected Work & Case Studies</span><h2 class="section-heading" id="workTitle">讓專業經驗，成為<br><span class="gradient-text">值得信賴的成果。</span></h2></div>
+          <p class="section-lede">從語言細節到跨團隊流程，每個環節都值得用心設計。以下以常見服務情境說明可能的合作方式。</p>
+        </div>
+        <div class="work-grid">
+          <article class="work-card reveal">
+            <div class="art art-translation" aria-hidden="true"><div class="art-frame"><span class="art-kanji">伝</span><span class="art-arrows"><i data-lucide="arrow-left-right"></i></span><span class="art-words">傳</span></div></div>
+            <div class="work-body"><p class="kicker">SERVICE APPLICATION EXAMPLE / 01</p><h3>日中翻譯與內容在地化</h3><p>兼顧語言精度、當地用語與閱讀情境，讓訊息以適合目標受眾的方式呈現。</p><button class="text-link" type="button" data-template="case-translation" data-title="日中翻譯與內容在地化" data-category="服務應用示例 · Language & Localization">查看應用說明 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div>
+          </article>
+          <article class="work-card reveal">
+            <div class="art art-termbase" aria-hidden="true"><div class="art-frame"><div class="term-stack"><div class="term-line">Terminology <span>Approved ✓</span></div><div class="term-line">Style Guide <span>Aligned ✓</span></div><div class="term-line">Memory <span>Updated ✓</span></div></div></div></div>
+            <div class="work-body"><p class="kicker">SERVICE APPLICATION EXAMPLE / 02</p><h3>企業多語內容與術語管理</h3><p>整合術語、翻譯記憶與風格規範，減少不同文件或版本間的用語落差。</p><button class="text-link" type="button" data-template="case-terminology" data-title="企業多語內容與術語管理" data-category="服務應用示例 · Terminology & Language Assets">查看應用說明 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div>
+          </article>
+          <article class="work-card reveal">
+            <div class="art art-workflow art-processing" aria-hidden="true"><div class="art-frame"><div class="process-track"><span>INPUT</span><i data-lucide="arrow-right"></i><span>AI</span><i data-lucide="arrow-right"></i><span>PE</span></div></div></div>
+            <div class="work-body"><p class="kicker">SERVICE APPLICATION EXAMPLE / 03</p><h3>AI 輔助翻譯與流程優化</h3><p>以具體需求設計 AI 與譯後編輯的分工，讓技術支援效率，讓人員保有品質決策權。</p><button class="text-link" type="button" data-template="case-workflow" data-title="AI 輔助翻譯與流程優化" data-category="服務應用示例 · AI-Assisted Workflow">查看應用說明 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div>
+          </article>
+          <article class="work-card reveal">
+            <div class="art art-quality" aria-hidden="true"><div class="art-frame"><div class="quality-visual"><i data-lucide="shield-check"></i></div></div></div>
+            <div class="work-body"><p class="kicker">SERVICE APPLICATION EXAMPLE / 04</p><h3>品質控管與跨團隊協作</h3><p>以明確的品質檢查項目與溝通節點，提升交接清晰度，降低反覆確認的成本。</p><button class="text-link" type="button" data-template="case-quality" data-title="品質控管與跨團隊協作" data-category="服務應用示例 · Quality Assurance">查看應用說明 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div>
+          </article>
+        </div>
+        <p class="work-disclaimer">* 上述內容為「服務應用示例」，用來說明可提供的工作方式；並非特定客戶的已完成案例，也不代表實測成果或績效數據。</p>
+      </div>
+    </section>
+
+    <section class="section blog" id="journal" aria-labelledby="journalTitle">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div><div class="section-index">04 / INSIGHTS & PERSPECTIVES</div><span class="overline">Language, Technology & Beyond</span><h2 class="section-heading" id="journalTitle">在語言與科技之間，<br><span class="gradient-text">持續探索。</span></h2></div>
+          <p class="section-lede">記錄翻譯工作、AI 工具、跨文化溝通與知識管理的觀察，也分享持續學習中的新發現。</p>
+        </div>
+        <div class="blog-grid">
+          <article class="blog-card reveal"><div class="blog-cover blog-cover--one" aria-hidden="true"><span class="cover-small">ESSAY / 001</span><span class="cover-type">譯</span></div><div class="blog-body"><span class="kicker">TRANSLATION INSIGHTS</span><h3>AI 時代的翻譯工作：為什麼人的判斷依然不可或缺？</h3><p>速度之外，語氣、文化脈絡與溝通目的，仍需要細緻理解。</p><button class="text-link" type="button" data-template="article-human" data-title="AI 時代的翻譯工作：為什麼人的判斷依然不可或缺？" data-category="示範短文 · 翻譯專業觀察">閱讀示範短文 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div></article>
+          <article class="blog-card reveal"><div class="blog-cover blog-cover--two" aria-hidden="true"><span class="cover-small">ESSAY / 002</span><span class="cover-type">知</span></div><div class="blog-body"><span class="kicker">AI & KNOWLEDGE</span><h3>從翻譯記憶庫到 AI：企業語言資產如何創造長期價值？</h3><p>當術語與翻譯記憶可以延續，語言品質就不再從零開始。</p><button class="text-link" type="button" data-template="article-assets" data-title="從翻譯記憶庫到 AI：企業語言資產如何創造長期價值？" data-category="示範短文 · AI 與知識管理">閱讀示範短文 <i data-lucide="arrow-up-right" aria-hidden="true"></i></button></div></article>
+          <article class="blog-card reveal"><div class="blog-cover blog-cover--three" aria-hidden="true"><span class="cover-small">IDEA / 003</span><span class="cover-type">文</span></div><div class="blog-body"><span class="kicker">CROSS-CULTURAL COMMUNICATION</span><h3>日文與繁體中文在地化：不只是文字轉換。</h3><p>從詞彙選擇到使用情境，理解文化差異才能讓內容真正貼近讀者。</p><span class="coming">選題預告 · 內容準備中</span></div></article>
+          <article class="blog-card reveal"><div class="blog-cover blog-cover--four" aria-hidden="true"><span class="cover-small">IDEA / 004</span><span class="cover-type">創</span></div><div class="blog-body"><span class="kicker">KNOWLEDGE & DESIGN</span><h3>讓科技更有溫度：我對 AI 與專業協作的思考。</h3><p>思考資訊設計、專業表達與數位工具，如何共同改善工作體驗。</p><span class="coming">選題預告 · 內容準備中</span></div></article>
+        </div>
+        <p class="work-disclaimer">* 本區兩篇可閱讀文章為網站展示用的示範短文，另外兩篇為選題預告，均未標示為已正式發布。</p>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="solutions" aria-labelledby="solutionsTitle">
+      <div class="container">
+        <div class="section-heading-row reveal">
+          <div>
+            <div class="section-index">05 / PRODUCTS & SOLUTIONS</div>
+            <span class="overline">Core Products & Technical Solutions</span>
+            <h2 class="section-heading" id="solutionsTitle">核心產品與<span class="gradient-text">技術解決方案</span></h2>
+          </div>
+        </div>
+        <div class="service-features">
+          <article class="service-feature reveal">
+            <div class="feature-symbol"><i class="fa-solid fa-language" aria-hidden="true"></i></div>
+            <span class="feature-code">SOLUTION / 01</span>
+            <h3>01｜客製化 AI 智慧翻譯<span class="solution-en" lang="en">Customized AI Translation</span></h3>
+            <p>整合 AI 語言模型、企業專業術語與既有翻譯資源，打造符合產業特性及品牌風格的智慧翻譯方案，提升多語內容處理效率與譯文一致性。</p>
+          </article>
+          <article class="service-feature reveal">
+            <div class="feature-symbol"><i class="fa-solid fa-user-pen" aria-hidden="true"></i></div>
+            <span class="feature-code">SOLUTION / 02</span>
+            <h3>02｜AI + PE 專業譯後編輯<span class="solution-en" lang="en">AI-Powered Human Post-Editing</span></h3>
+            <p>結合 AI 翻譯效率與專業母語人員的語言判斷，透過獨立審校機制，降低 AI 譯文造成的判斷偏差，兼顧語意準確性、文化適切性與翻譯品質。</p>
+          </article>
+          <article class="service-feature reveal">
+            <div class="feature-symbol"><i class="fa-solid fa-database" aria-hidden="true"></i></div>
+            <span class="feature-code">SOLUTION / 03</span>
+            <h3>03｜智慧語言資產與知識管理<span class="solution-en" lang="en">Intelligent Language Asset Management</span></h3>
+            <p>系統化整合翻譯記憶庫、專業術語庫及專案知識，結合數位工具優化管理流程，讓企業語言資產持續累積、有效共享與重複運用。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact-me" aria-labelledby="contactMeTitle">
+      <div class="container">
+        <div class="contact-panel reveal">
+          <div class="contact-intro">
+            <div class="section-index">06 / CONTACT ME</div>
+            <span class="overline" lang="en">Let's Connect</span>
+            <h2 class="section-heading" id="contactMeTitle">聯絡我<span class="solution-en" lang="en">Contact Me</span></h2>
+            <p class="section-lede">有多語翻譯、AI + PE 專案或語言資產管理需求嗎？歡迎透過需求表單分享你的想法，讓我們從了解需求開始，探索適合的合作方案。</p>
+          </div>
+          <div class="contact-form-card">
+            <span class="contact-form-icon"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i></span>
+            <h3>填寫需求表單</h3>
+            <p>透過 Google 表單提供專案背景與合作需求，讓後續的溝通更聚焦。</p>
+            <a class="btn btn-primary" href="https://forms.gle/gq5d5cKrdfvZppEV8" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-google" aria-hidden="true"></i>填寫需求表單 <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i><span class="sr-only">（另開分頁）</span></a>
+            <small class="contact-form-note">點擊後將於新分頁開啟 Google 表單。</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="consult" id="consultation" aria-labelledby="consultTitle">
+      <div class="container">
+        <div class="consult-shell reveal">
+          <span class="overline">LET'S CREATE BETTER COMMUNICATION TOGETHER</span>
+          <h2 id="consultTitle">讓我們一起探索，<br><span class="gradient-text">更有效率的多語溝通。</span></h2>
+          <p class="consult-en">Every collaboration starts with a meaningful conversation.</p>
+          <p>無論你正在尋找專業翻譯服務、評估 AI + PE 導入方案，或希望交流語言技術與工作流程優化的可能性，都歡迎與我聯繫。每一個合作機會，都從一次有價值的對話開始。</p>
+          <div class="consult-action"><a class="consult-button" href="https://calendar.app.google/rvC5xPsN5ezAk82AA" target="_blank" rel="noopener noreferrer">立即預約專業諮詢 <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><small class="consult-status">● Status: Ready to Connect</small></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><a href="#home" class="brand" aria-label="回到首頁"><span class="brand-mark" aria-hidden="true">文</span><span class="brand-copy"><strong>LANGUAGE × AI</strong><small>HUMAN-CENTERED EXPERTISE</small></span></a><p>以語言建立連結，以科技拓展可能，以設計傳遞價值。讓科技的效率與人文的溫度，在每一次溝通中相遇。</p></div>
+        <div><h2 class="footer-title">快速導覽 / EXPLORE</h2><nav class="footer-links" aria-label="頁尾導覽"><a href="#about">關於我</a><a href="#service">AI + PE 智慧翻譯</a><a href="#work">應用案例</a><a href="#journal">觀點文章</a><a href="#consultation">預約諮詢</a></nav></div>
+        <div class="footer-contact"><h2 class="footer-title">聯絡我 / CONNECT</h2><p>有多語翻譯、AI + PE 專案或跨領域合作需求嗎？歡迎先透過預約頁面與我聯繫。</p><a href="https://calendar.app.google/rvC5xPsN5ezAk82AA" target="_blank" rel="noopener noreferrer" class="text-link">前往預約頁面 <i data-lucide="arrow-up-right" aria-hidden="true"></i></a><span class="placeholder">電子郵件／社群：〔待補上〕</span></div>
+      </div>
+      <div class="footer-bottom"><span>© <span id="copyrightYear">2026</span> LANGUAGE × AI. All rights reserved.</span><span>Crafted with language, technology & a human touch.</span></div>
+    </div>
+  </footer>
+
+  <button id="backToTop" class="back-to-top" type="button" aria-label="返回頁面頂端" title="返回頂端"><i data-lucide="arrow-up" aria-hidden="true"></i></button>
+
+  <dialog class="detail-dialog" id="detailDialog" aria-labelledby="dialogTitle" aria-describedby="dialogCategory">
+    <div class="dialog-inner">
+      <button class="dialog-close" id="dialogClose" type="button" aria-label="關閉內容視窗"><i data-lucide="x" aria-hidden="true"></i></button>
+      <p id="dialogCategory" class="dialog-kicker"></p>
+      <h2 id="dialogTitle"></h2>
+      <div id="dialogBody" class="dialog-content"></div>
+    </div>
+  </dialog>
+
+  <!-- 各項詳細內容使用原生 template，便於直接修改文章文字，不需要資料庫或額外框架。 -->
+  <template id="case-translation">
+    <h3>可能面臨的需求</h3><p>將日文產品說明、行銷內容、網站介面或企業文件轉換為繁體中文，同時保留原有訊息與品牌語調。</p>
+    <h3>可採用的工作方式</h3><ul><li>確認內容用途、目標讀者與地域用語。</li><li>整理專有名詞、產品名稱和既有翻譯參考。</li><li>依文字類型安排翻譯、審校及必要的版面檢查。</li><li>檢視文化細節、語氣及跨頁或跨版本的一致性。</li></ul>
+    <h3>希望創造的價值</h3><p>讓讀者讀到的不只是「翻成中文的文字」，而是語意清楚、自然易懂且符合使用場景的內容。</p>
+    <p class="dialog-note">這是服務應用示例，非特定已完成專案。</p>
+  </template>
+  <template id="case-terminology">
+    <h3>可能面臨的需求</h3><p>企業有多個產品線、不同語言版本，或跨部門與外部供應商共同處理大量文件，容易出現相同詞彙翻法不同的狀況。</p>
+    <h3>可採用的工作方式</h3><ul><li>彙整常用術語與既有翻譯記憶庫。</li><li>區分品牌用語、技術名詞與需要依語境調整的詞彙。</li><li>確認核准用語、禁用表述、目標市場的語言習慣。</li><li>建立更新與回饋機制，讓語言資產得以持續累積。</li></ul>
+    <h3>希望創造的價值</h3><p>減少重複確認的負擔，讓多語文件在不同專案及協作團隊間保有可追溯的一致性。</p>
+    <p class="dialog-note">這是服務應用示例，非特定已完成專案。</p>
+  </template>
+  <template id="case-workflow">
+    <h3>可能面臨的需求</h3><p>企業需要處理更新頻繁或篇幅較大的多語內容，希望評估 AI 翻譯能在哪些部分提供協助，同時保持必要的品質審查。</p>
+    <h3>可採用的工作方式</h3><ul><li>依領域、風險與公開用途評估適用內容。</li><li>整理既有語言資產與術語，訂定 AI 處理條件。</li><li>安排專業母語譯後編輯，檢查意義、語氣與自然度。</li><li>依專案特性執行術語、格式及完整性確認。</li></ul>
+    <h3>希望創造的價值</h3><p>不是把每一份文件都交給 AI，而是釐清工具與專家各自適合負責的工作，建立更可控的流程。</p>
+    <p class="dialog-note">這是服務應用示例，實際處理方式需依文件性質及專案要求調整。</p>
+  </template>
+  <template id="case-quality">
+    <h3>可能面臨的需求</h3><p>翻譯專案涉及多位譯者、校對人員、排版或其他專案成員，必須在有限時程內清楚傳達規範與變更。</p>
+    <h3>可採用的工作方式</h3><ul><li>建立任務分工、檔案版本與問題回報方式。</li><li>明確記錄術語決策及客戶核定的文字。</li><li>依檔案格式執行一致性、漏譯、標記和排版檢查。</li><li>在交付前針對例外情形留下可追溯的說明。</li></ul>
+    <h3>希望創造的價值</h3><p>減少資訊落差，讓品質檢查與專案溝通有清楚的依循，也方便後續更新與維護。</p>
+    <p class="dialog-note">這是服務應用示例，非特定已完成專案。</p>
+  </template>
+  <template id="article-human">
+    <p>AI 翻譯的速度，已經讓我們能以不同方式思考語言工作的流程。當大量內容可以快速轉換成另一種語言時，真正值得問的問題，也從「能不能翻出來」，逐漸轉向「這樣表達，是否適合讀者？」</p>
+    <h3>正確，不一定等於合適</h3>
+    <p>相同的日文句子，放在產品介面、正式公告或品牌宣傳中，可能需要不同的繁體中文表達。譯文在字面上或許沒有錯誤，卻可能因為語氣太生硬、句子太長，或忽略使用情境而讓人難以理解。</p>
+    <h3>人類專業的價值，在於判斷</h3>
+    <p>好的語言工作不只是換字，而是理解說話者真正想傳達什麼、讀者已經知道什麼，以及哪些文化細節需要被保留或調整。這些細膩的選擇，都依賴具備語言經驗的專業判斷。</p>
+    <p>AI 可以協助提出初稿、整理資訊或比較可能的表達方式；人則負責重新檢視前提、查證有疑問的內容，並決定哪些說法真正適合專案。當兩者的角色清楚，科技才更能成為可靠的工作夥伴。</p>
+    <h3>讓效率回到溝通的本質</h3><p>我認為 AI 與翻譯專家不是二選一的關係。將機械性工作交給工具，能讓專業人員把心力留給需要思考的地方：語意、文化、讀者，以及一段文字最終帶來的理解。</p>
+    <p class="dialog-note">本文為網站展示用的示範短文，尚未正式發布。</p>
+  </template>
+  <template id="article-assets">
+    <p>當企業持續製作產品文件、網站內容、內部教材與行銷素材時，會逐步累積大量專有名詞和已確認的翻譯。這些資訊不只是過去工作的紀錄，更是一種可以再利用的語言資產。</p>
+    <h3>術語與翻譯記憶庫各有角色</h3>
+    <p>術語庫記錄特定名稱、專業名詞或品牌慣用表達，協助不同人員使用一致的用語。翻譯記憶庫則保存曾處理過的對應句段，遇到相似內容時可以提供參考。</p>
+    <p>兩者需要持續維護。沒有確認來源或沒有依照語境分類的翻譯，即使累積得再多，也未必能直接重複使用。</p>
+    <h3>AI 並不代表可以跳過整理</h3>
+    <p>導入 AI 翻譯時，企業常會優先關心模型或工具。然而，清楚的術語、品牌語調規範與經過審核的參考資料，同樣有助於建立可管理的流程。AI 系統產生的內容，仍需要依實際用途進行檢查。</p>
+    <h3>讓每一次合作都能留下價值</h3>
+    <p>理想的語言資產管理，是讓專案中確認過的選擇被妥善記錄，並能在下一次工作時順利找到。當內容、工具與人員的知識彼此連結，翻譯就能從單次交付，逐步轉變為企業長期的知識累積。</p>
+    <p class="dialog-note">本文為網站展示用的示範短文，尚未正式發布。</p>
+  </template>
+
+  <script>
+    (() => {
+      'use strict';
+      const reducedMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const reduceMotion = () => reducedMotionQuery.matches;
+      const header = document.getElementById('siteHeader');
+      const menuToggle = document.getElementById('menuToggle');
+      const mobileNav = document.getElementById('mobileNav');
+      const backToTop = document.getElementById('backToTop');
+      const dialog = document.getElementById('detailDialog');
+      const dialogBody = document.getElementById('dialogBody');
+      const closeDialogButton = document.getElementById('dialogClose');
+      let lastDialogTrigger = null;
+      let menuOpen = false;
+
+      // 手機選單：更新 ARIA、點擊連結關閉、Escape 關閉。
+      function setMenuOpen(open) {
+        menuOpen = open;
+        mobileNav.classList.toggle('is-open', open);
+        mobileNav.inert = !open;
+        menuToggle.setAttribute('aria-expanded', String(open));
+        menuToggle.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
+      }
+      menuToggle.addEventListener('click', () => setMenuOpen(!menuOpen));
+      mobileNav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenuOpen(false)));
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && menuOpen) { setMenuOpen(false); menuToggle.focus(); }
+      });
+      document.addEventListener('click', event => {
+        if (menuOpen && !header.contains(event.target)) setMenuOpen(false);
+      });
+      window.matchMedia('(min-width: 851px)').addEventListener('change', event => {
+        if (event.matches && menuOpen) setMenuOpen(false);
+      });
+
+      // 主標題有完整靜態內容；僅在支援動態效果時執行一次打字動畫。
+      const heading = document.getElementById('heroHeading');
+      const typedFirst = document.getElementById('typedFirst');
+      const typedSecond = document.getElementById('typedSecond');
+      if (!reduceMotion()) {
+        const rows = [
+          { node: typedFirst, chars: Array.from('AI 的效率，') },
+          { node: typedSecond, chars: Array.from('人的專業。') }
+        ];
+        let rowIndex = 0;
+        let charIndex = 0;
+        heading.classList.add('is-typing');
+        typedFirst.classList.add('active');
+        const writeCharacter = () => {
+          if (reduceMotion()) {
+            typedFirst.textContent = 'AI 的效率，'; typedSecond.textContent = '人的專業。';
+            heading.classList.remove('is-typing');
+            return;
+          }
+          const current = rows[rowIndex];
+          current.node.textContent += current.chars[charIndex++];
+          if (charIndex < current.chars.length) {
+            window.setTimeout(writeCharacter, 90);
+          } else if (rowIndex === 0) {
+            typedFirst.classList.remove('active');
+            rowIndex = 1; charIndex = 0;
+            typedSecond.classList.add('active');
+            window.setTimeout(writeCharacter, 400);
+          } else {
+            heading.classList.add('is-finished');
+            typedSecond.classList.remove('active');
+            window.setTimeout(() => { heading.classList.remove('is-typing','is-finished'); }, 1200);
+          }
+        };
+        window.setTimeout(writeCharacter, 360);
+      }
+
+      // 滑入動畫：JS 失效時原始內容仍可見。
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reduceMotion()) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.06, rootMargin: '0px 0px -25px 0px' });
+        document.body.classList.add('js-ready');
+        revealItems.forEach(item => revealObserver.observe(item));
+      } else {
+        revealItems.forEach(item => item.classList.add('is-visible'));
+      }
+      const workflow = document.getElementById('workflowPanel');
+      if ('IntersectionObserver' in window && !reduceMotion()) {
+        const workflowObserver = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); observer.unobserve(entry.target); } });
+        }, { threshold: 0.26 });
+        workflowObserver.observe(workflow);
+      } else workflow.classList.add('is-visible');
+
+      // 導覽位置、閱讀進度與返回頂端。
+      const navLinks = document.querySelectorAll('[data-nav]');
+      const sections = ['home','about','service','work','journal','consultation','contact']
+        .map(id => document.getElementById(id)).filter(Boolean);
+      function updateScrollUI() {
+        const top = window.scrollY;
+        const docHeight = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        header.style.setProperty('--scroll-progress', Math.min(100,Math.max(0,(top / docHeight) * 100)) + '%');
+        backToTop.classList.toggle('show', top > 650);
+        let active = 'home';
+        const threshold = top + window.innerHeight * .37;
+        for (const section of sections) if (section.offsetTop <= threshold) active = section.id;
+        if (active === 'consultation') active = 'contact';
+        navLinks.forEach(link => {
+          if (link.dataset.nav === active) link.setAttribute('aria-current','location');
+          else link.removeAttribute('aria-current');
+        });
+      }
+      window.addEventListener('scroll', updateScrollUI, {passive:true});
+      window.addEventListener('resize', updateScrollUI, {passive:true});
+      updateScrollUI();
+      backToTop.addEventListener('click', () => window.scrollTo({top:0,behavior:reduceMotion()?'instant':'smooth'}));
+
+      // 以原生 dialog 顯示案例及示範文章。Esc、關閉鈕和點擊遮罩均可關閉。
+      function closeDialog() { if (dialog.open) dialog.close(); }
+      document.querySelectorAll('[data-template]').forEach(button => {
+        button.addEventListener('click', () => {
+          const template = document.getElementById(button.dataset.template);
+          if (!template) return;
+          lastDialogTrigger = button;
+          document.getElementById('dialogTitle').textContent = button.dataset.title;
+          document.getElementById('dialogCategory').textContent = button.dataset.category;
+          dialogBody.replaceChildren(template.content.cloneNode(true));
+          dialog.showModal();
+          document.body.classList.add('modal-open');
+          closeDialogButton.focus();
+        });
+      });
+      closeDialogButton.addEventListener('click', closeDialog);
+      dialog.addEventListener('click', event => { if (event.target === dialog) closeDialog(); });
+      dialog.addEventListener('close', () => {
+        document.body.classList.remove('modal-open');
+        if (lastDialogTrigger) lastDialogTrigger.focus();
+      });
+
+      // 圖標載入若失敗，不影響任何文字、導覽或操作。
+      document.addEventListener('DOMContentLoaded', () => {
+        if (window.lucide) window.lucide.createIcons();
+      }, { once: true });
+      document.getElementById('copyrightYear').textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
